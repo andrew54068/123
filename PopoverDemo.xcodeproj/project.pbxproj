@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159F52ACB9D3F81A5DA28425 /* Pods_PopoverDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D878FC6132565956C9589BA /* Pods_PopoverDemo.framework */; };
 		C1F608502224E7E100CA4882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F6084F2224E7E100CA4882 /* AppDelegate.swift */; };
 		C1F608522224E7E100CA4882 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F608512224E7E100CA4882 /* ViewController.swift */; };
 		C1F608552224E7E100CA4882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1F608532224E7E100CA4882 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D878FC6132565956C9589BA /* Pods_PopoverDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopoverDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A2726E8C2DDF185CFF39589 /* Pods-PopoverDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopoverDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopoverDemo/Pods-PopoverDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C1F6084C2224E7E100CA4882 /* PopoverDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopoverDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F6084F2224E7E100CA4882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1F608512224E7E100CA4882 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		C1F608562224E7E200CA4882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1F608592224E7E200CA4882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1F6085B2224E7E200CA4882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E22A5A475ECEB2C861C10AF3 /* Pods-PopoverDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopoverDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopoverDemo/Pods-PopoverDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159F52ACB9D3F81A5DA28425 /* Pods_PopoverDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46F3FD4929062D32F549F2EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E22A5A475ECEB2C861C10AF3 /* Pods-PopoverDemo.debug.xcconfig */,
+				8A2726E8C2DDF185CFF39589 /* Pods-PopoverDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AB67CA7B4071DB2E139ACD18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D878FC6132565956C9589BA /* Pods_PopoverDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C1F608432224E7E100CA4882 = {
 			isa = PBXGroup;
 			children = (
 				C1F6084E2224E7E100CA4882 /* PopoverDemo */,
 				C1F6084D2224E7E100CA4882 /* Products */,
+				46F3FD4929062D32F549F2EA /* Pods */,
+				AB67CA7B4071DB2E139ACD18 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1F6085E2224E7E200CA4882 /* Build configuration list for PBXNativeTarget "PopoverDemo" */;
 			buildPhases = (
+				ECC6D8175914BD9AAC9328AF /* [CP] Check Pods Manifest.lock */,
 				C1F608482224E7E100CA4882 /* Sources */,
 				C1F608492224E7E100CA4882 /* Frameworks */,
 				C1F6084A2224E7E100CA4882 /* Resources */,
+				766F4D1372CEBDBF2ADA3726 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		766F4D1372CEBDBF2ADA3726 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PopoverDemo/Pods-PopoverDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/mLayout/mLayout.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/mLayout.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopoverDemo/Pods-PopoverDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECC6D8175914BD9AAC9328AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PopoverDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1F608482224E7E100CA4882 /* Sources */ = {
@@ -280,11 +345,13 @@
 		};
 		C1F6085F2224E7E200CA4882 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E22A5A475ECEB2C861C10AF3 /* Pods-PopoverDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3CW8X9NUYB;
 				INFOPLIST_FILE = PopoverDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,11 +365,13 @@
 		};
 		C1F608602224E7E200CA4882 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A2726E8C2DDF185CFF39589 /* Pods-PopoverDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3CW8X9NUYB;
 				INFOPLIST_FILE = PopoverDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
