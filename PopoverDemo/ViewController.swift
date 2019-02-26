@@ -144,6 +144,7 @@ class UserGuideVC: UIViewController {
         // 10 stands for button to right
         preferredContentSize = CGSize(width: userGuideLabel.intrinsicContentSize.width + 15 + 14 + 16 + 10,
                                       height: userGuideLabel.intrinsicContentSize.height + 10 + 10)
+        // must set modalPresentationStyle then set popoverPresentationController porperties
         modalPresentationStyle = .popover
         
         popoverPresentationController?.backgroundColor = .darkSkyBlueTwo
