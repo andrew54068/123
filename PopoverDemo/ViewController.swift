@@ -11,18 +11,48 @@ import mLayout
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var testButton: UIButton!
+    
     @IBOutlet weak var userGuideButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userGuideButton.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
+        userGuideButton.setTitleColor(.red, for: .highlighted)
+        
+        testButton.addTarget(self, action: #selector(showAlert(_:)), for: .touchUpInside)
     }
+    
+    @objc func showAlert(_ sender: UIButton) {
+        vc.dismiss(animated: false, completion: nil)
+        let alert: UIAlertController = UIAlertController(title: "alert", message: "this is me", preferredStyle: .alert)
+        let action = UIAlertAction(title: "確認", style: .destructive, handler: nil)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    let vc: UserGuideVC = UserGuideVC(type: .discussion)
     
     @objc func didTap(_ sender: UIButton) {
         
-        let vc: UserGuideVC = UserGuideVC(type: .discussion)
-        
         let popVC: UIPopoverPresentationController? = vc.popoverPresentationController
+        
+        func recusive(view: UIView) -> [UIView] {
+            if view.subviews != [] {
+                var array: [UIView] = []
+                array = view.subviews.reduce(array) { (result, innerView) -> [UIView] in
+                    let a: [UIView] = result
+                    return a + recusive(view: innerView)
+                }
+                return array + [view]
+            }
+            return [view]
+        }
+        
+        // be able to click other view beside UserGuideVC
+        popVC?.passthroughViews = recusive(view: UIApplication.shared.keyWindow!)
         
         popVC?.sourceView = userGuideButton
         popVC?.sourceRect = CGRect(x: 0,
@@ -30,7 +60,6 @@ class ViewController: UIViewController {
                                    width: userGuideButton.bounds.width,
                                    height: userGuideButton.bounds.height)
         present(vc, animated: true, completion: nil)
-        
     }
 
     class testTransition: NSObject, UIViewControllerTransitioningDelegate {
@@ -123,8 +152,6 @@ class UserGuideVC: UIViewController {
         popoverPresentationController?.delegate = self
     }
     
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -145,24 +172,19 @@ class UserGuideVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if let mirrorNinePatchView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1]?.subviews[safe: 1],
-            let dimmingView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1]?.subviews[safe: 0],
-            let transitionView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1] {
+        if let mirrorNinePatchView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1]?.subviews[safe: 1] {
+            
+            // remove the shadow behide user guide
             mirrorNinePatchView.isHidden = true
-            dimmingView.isHidden = true
-            transitionView.backgroundColor = .clear
+            
         }
     }
     
     @objc func dismissUserGuide() {
         dismiss(animated: true,
                 completion: {
-                    if let mirrorNinePatchView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1]?.subviews[safe: 1],
-                        let dimmingView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1]?.subviews[safe: 0],
-                        let trnsitionView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1] {
+                    if let mirrorNinePatchView: UIView = UIApplication.shared.keyWindow?.subviews[safe: 1]?.subviews[safe: 1] {
                         mirrorNinePatchView.isHidden = false
-                        dimmingView.isHidden = false
-                        trnsitionView.alpha = 1
                     }
         })
     }
