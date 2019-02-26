@@ -61,43 +61,7 @@ class ViewController: UIViewController {
                                    height: userGuideButton.bounds.height)
         present(vc, animated: true, completion: nil)
     }
-
-    class testTransition: NSObject, UIViewControllerTransitioningDelegate {
     
-        func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-            return testTransitioning()
-        }
-    
-    }
-    
-    class testTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
-    
-        func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-            return 5
-        }
-    
-        func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-            guard let fromView: UIView = transitionContext.view(forKey: .from),
-                let toView: UIView = transitionContext.view(forKey: .to) else {
-                    transitionContext.completeTransition(false)
-                    return
-            }
-            let containerView: UIView = transitionContext.containerView
-            containerView.addSubview(toView)
-            containerView.backgroundColor = .red
-    
-            containerView.backgroundColor = .clear
-            UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut], animations: {
-                fromView.alpha = 0.5
-                toView.alpha = 0.7
-            }, completion: { _ in
-                fromView.removeFromSuperview()
-                transitionContext.completeTransition(true)
-            })
-        }
-    
-    }
-
 }
 
 enum UserGuideType {
@@ -216,4 +180,40 @@ extension UIColor {
                                                  green: 144.0 / 255.0,
                                                  blue: 226.0 / 255.0,
                                                  alpha: 1.0)
+}
+
+class testTransition: NSObject, UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return testTransitioning()
+    }
+    
+}
+
+class testTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 5
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromView: UIView = transitionContext.view(forKey: .from),
+            let toView: UIView = transitionContext.view(forKey: .to) else {
+                transitionContext.completeTransition(false)
+                return
+        }
+        let containerView: UIView = transitionContext.containerView
+        containerView.addSubview(toView)
+        containerView.backgroundColor = .red
+        
+        containerView.backgroundColor = .clear
+        UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut], animations: {
+            fromView.alpha = 0.5
+            toView.alpha = 0.7
+        }, completion: { _ in
+            fromView.removeFromSuperview()
+            transitionContext.completeTransition(true)
+        })
+    }
+    
 }
